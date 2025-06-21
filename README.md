@@ -35,7 +35,7 @@ defer(
 
 The macro is defined like this:
 
-```
+```c
 #define defer(...) \
     for (int _defer_outer = 1; _defer_outer; (_defer_outer = 0, __VA_ARGS__)) \
         for (int _defer_inner = 1; _defer_inner; _defer_inner = 0)
