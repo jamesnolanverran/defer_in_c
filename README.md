@@ -5,12 +5,12 @@ This is a small experiment with a `defer(...) { ... }` macro for C, implemented 
 ## Example
 
 ```c
+FILE *f = fopen("file.txt", "r");
 defer(
     fclose(f),
-    free(buf),
     printf("cleanup done\n")
 ) {
-    // use f and buf here
+    // use f here
 }
 ```
 
