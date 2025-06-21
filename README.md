@@ -47,6 +47,8 @@ It creates a nested block that ensures the cleanup expressions are executed afte
 
 This was written mostly for fun while exploring C's macro system.
 
+---
+
 Created by James Verran
 
 MIT License
