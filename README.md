@@ -4,7 +4,7 @@ This is a small experiment with a `defer(...) { ... }` macro for C, implemented 
 
 ## Example
 
-```
+```c
 defer(
     fclose(f),
     free(buf),
