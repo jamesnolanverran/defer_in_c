@@ -26,7 +26,7 @@ defer(
 
 - ⚠️ Arguments must be expressions (not statement blocks)
     
-- ⚠️ Requires structured control flow (no early return if cleanup must run)
+- ⚠️ Cleanup runs when the block ends—don’t return early
     
 
 ## How It Works
