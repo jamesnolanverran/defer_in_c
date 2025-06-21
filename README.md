@@ -1,2 +1,49 @@
-# defer_in_c
-A Minimal, Portable Defer Macro for C
+# defer.h - A Minimal, Portable Defer Macro for C
+
+This is a small experiment with a `defer(...) { ... }` macro for C, implemented using nested `for`-loops and comma expressions. It requires no compiler extensions and should work in standard C (C89+).
+
+## Example
+
+```
+defer(
+    fclose(f),
+    free(buf),
+    printf("cleanup done\n")
+) {
+    // use f and buf here
+}
+```
+
+## Features
+
+- ✅ Fully portable (no compiler extensions)
+    
+- ✅ Clean syntax
+    
+- ✅ Nestable
+    
+- ✅ Multiple cleanup actions
+
+- ⚠️ Arguments must be expressions (not statement blocks)
+    
+- ⚠️ Requires structured control flow (no early return if cleanup must run)
+    
+
+## How It Works
+
+The macro is defined like this:
+
+```
+#define defer(...) \
+    for (int _defer_outer = 1; _defer_outer; (_defer_outer = 0, __VA_ARGS__)) \
+        for (int _defer_inner = 1; _defer_inner; _defer_inner = 0)
+```
+
+It creates a nested block that ensures the cleanup expressions are executed after the main block completes, unless exited via early return.
+
+## Why
+
+This was written mostly for fun while exploring C's macro system.
+
+Created by James Verran
+MIT License
