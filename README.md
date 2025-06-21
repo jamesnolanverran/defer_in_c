@@ -22,11 +22,11 @@ defer(
     
 - ✅ Nestable
     
-- ✅ Multiple cleanup actions
+- ✅ Supports multiple cleanup actions
 
-- ⚠️ Arguments must be expressions (not statement blocks)
+- ⚠️ Defer arguments must be expressions (not statement blocks)
     
-- ⚠️ Cleanup runs when the block ends—don’t return early
+- ⚠️ Cleanup runs when the block ends - don’t return early
     
 
 ## How It Works
