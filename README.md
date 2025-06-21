@@ -43,6 +43,23 @@ The macro is defined like this:
 
 It creates a nested block that ensures the cleanup expressions are executed after the main block completes, unless exited via early return.
 
+## On Scope, Cleanup, and Tradeoffs
+The use case for defer is typically to run cleanup code when you're done with a resource - closing a file, freeing memory, releasing a lock, etc.
+
+In Go and Rust, defer or destructors are tied to function scope. That means cleanup code runs automatically at the end of the function, no matter where you return.
+
+This macro takes a different approach: it ties cleanup to a block scope, not the entire function. You get cleanup when the block ends - whether that's mid-function, at the bottom, or anywhere you're done using a resource.
+
+You can still exit the block early using break. You just can't use return inside the block, or the cleanup code will be skipped.
+
+```c
+defer(free(x)) {
+    if (some_condition) break; // early exit, cleanup still runs
+    // use x here
+} // cleanup happens here
+return result; // after cleanup
+```
+
 ## Why
 
 This was written mostly for fun while exploring C's macro system.
