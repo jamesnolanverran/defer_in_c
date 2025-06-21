@@ -1,6 +1,6 @@
 # defer.h - A Minimal, Portable Defer Macro for C
 
-This is a small experiment with a `defer(...) { ... }` macro for C, implemented using nested `for`-loops and comma expressions. It requires no compiler extensions and should work in standard C (C89+).
+This is a small experiment with a `defer(...) { ... }` macro for C, implemented using nested `for`-loops and comma expressions. It requires no compiler extensions and should work in standard C (C89+). 
 
 ## Example
 
@@ -27,6 +27,8 @@ defer(
 - ⚠️ Defer arguments must be expressions (not statement blocks)
     
 - ⚠️ Cleanup runs when the block ends - don’t return early
+
+- ⚠️ Minimally tested!
     
 
 ## How It Works
