@@ -46,7 +46,7 @@ It creates a nested block that ensures the cleanup expressions are executed afte
 ## On Scope, Cleanup, and Tradeoffs
 The use case for defer is typically to run cleanup code when you're done with a resource - closing a file, freeing memory, releasing a lock, etc.
 
-In Go and Rust, defer or destructors are tied to function scope. That means cleanup code runs automatically at the end of the function, no matter where you return.
+In Go, deferred code runs automatically at the end of the function, no matter where you return.
 
 This macro takes a different approach: it ties cleanup to a block scope, not the entire function. You get cleanup when the block ends - whether that's mid-function, at the bottom, or anywhere you're done using a resource.
 
